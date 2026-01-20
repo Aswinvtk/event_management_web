@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore our gallery of past events, including weddings, corporate gatherings, and celebrations managed by Celeganz Events.">
+    <meta name="keywords" content="event gallery, wedding photos, corporate event images, event management portfolio">
+    <title>Gallery - Celeganz Events</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-4);
+            margin-top: var(--space-6);
+        }
+
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--space-3);
+            margin-bottom: var(--space-10);
+        }
+
+        .filter-btn {
+            padding: var(--space-2) var(--space-5);
+            border-radius: var(--radius-full);
+            border: 1px solid var(--color-light-gray);
+            background: var(--color-white);
+            color: var(--color-dark-gray);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--color-black);
+            color: var(--color-black);
+        }
+
+        .filter-btn.active {
+            background: var(--color-black);
+            color: var(--color-white);
+            border-color: var(--color-black);
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            background: var(--color-light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .gallery-item:hover img,
+        .gallery-item:hover video {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: 'View';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition-base);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .empty-gallery {
+            text-align: center;
+            padding: var(--space-20) 0;
+            grid-column: 1 / -1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Celeganz Events</a>
+
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index.html" class="navbar-link">Home</a></li>
+                <li><a href="services.html" class="navbar-link">Services</a></li>
+                <li><a href="gallery.html" class="navbar-link active">Gallery</a></li>
+                <li><a href="about.html" class="navbar-link">About Us</a></li>
+                <li><a href="blog.html" class="navbar-link">Blog</a></li>
+                <li><a href="contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+
+            <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation">
+                <span class="navbar-toggle-bar"></span>
+                <span class="navbar-toggle-bar"></span>
+                <span class="navbar-toggle-bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="hero" style="min-height: 40vh; background: var(--color-white);">
+        <div class="hero-content">
+            <h1 class="hero-title">Our Gallery</h1>
+            <p class="hero-subtitle">Visual snippets of unforgettable experiences we've crafted.</p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section">
+        <div class="container">
+            <!-- Filter Bar -->
+            <div class="filter-bar" id="filterBar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="wedding">Wedding</button>
+                <button class="filter-btn" data-filter="birthday">Birthday</button>
+                <button class="filter-btn" data-filter="nikkah">Muslim Wedding</button>
+                <button class="filter-btn" data-filter="hinduWeddings">Hindu Wedding</button>
+                <button class="filter-btn" data-filter="stages">Mandapam/Stages</button>
+                <button class="filter-btn" data-filter="treditional">Traditional</button>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Items dynamically loaded via gallery.js -->
+                <div class="empty-gallery">
+                    <h3>Your Story Starts Here</h3>
+                    <p>Loading gallery items...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Celeganz Events</h3>
+                    <p>Transforming visions into unforgettable experiences through meticulous planning and flawless
+                        execution.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">📘</a>
+                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="index.html" class="footer-link">Home</a>
+                        <a href="services.html" class="footer-link">Services</a>
+                        <a href="gallery.html" class="footer-link">Gallery</a>
+                        <a href="about.html" class="footer-link">About Us</a>
+                        <a href="blog.html" class="footer-link">Blog</a>
+                        <a href="contact.html" class="footer-link">Contact</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <div class="footer-links">
+                        <a href="services.html#wedding-planning" class="footer-link">Wedding Planning</a>
+                        <a href="services.html#destination-wedding" class="footer-link">Destination Wedding</a>
+                        <a href="services.html#corporate-events" class="footer-link">Corporate Events</a>
+                        <a href="services.html#conferences" class="footer-link">Conferences</a>
+                        <a href="services.html#group-tours" class="footer-link">Group Tours</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="footer-links">
+                        <p style="color: var(--color-dark-gray);">📍 Kerala, India</p>
+                        <p style="color: var(--color-dark-gray);">📞 +91 123 456 7890</p>
+                        <p style="color: var(--color-dark-gray);">✉️ info@celeganzevents.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Celeganz Events. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/asset_manager.js"></script>
+</body>
+
+</html>
